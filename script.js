@@ -1,32 +1,26 @@
-const hourEl=document.getElementById("hour")
-const minuteEl=document.getElementById("minutes")
-const secondEl=document.getElementById("seconds")
+const hourEl = document.getElementById("hour");
+const minuteEl = document.getElementById("minutes");
+const secondEl = document.getElementById("seconds");
+const ampmEl = document.getElementById("ampm");
 
-const ampmEl=document.getElementById("ampm");
-function updateClock(){
-  let h= new Date().getHours();
-  let m=  new Date().getMinutes();
-  let s=new Date().getSeconds();
-  let ampm = "AM"
+function updateClock() {
+  const now = new Date();
 
-  if (h>12){
-    h = h - 12;
-    ampm="PM";
-}
-if (h < 10) {
-  h = "0" + h;
-} else {
-  h = h;
-}
-m = m<10 ? "0"+m : m;
-s = s<10 ? "0"+s : s;
-hourEl.innerText=h;
-minuteEl.innerText=m;
-secondEl.innerText=s;
-ampmEl.innerText=ampm;
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
 
-setTimeout(() => {
-  updateClock()
-}, 1000);
+  const ampm = hours >= 12 ? "PM" : "AM";
+
+  // Convert to 12-hour format
+  hours = hours % 12 || 12;
+
+  hourEl.innerText = String(hours).padStart(2, "0");
+  minuteEl.innerText = String(minutes).padStart(2, "0");
+  secondEl.innerText = String(seconds).padStart(2, "0");
+  ampmEl.innerText = ampm;
 }
+
+// Run immediately, then every second
 updateClock();
+setInterval(updateClock, 1000);
