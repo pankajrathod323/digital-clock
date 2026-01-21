@@ -1,64 +1,121 @@
-body{
+/* RESET & BASE */
+* {
+  box-sizing: border-box;
+}
+
+body {
   margin: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 100vh;
-justify-content: center;
-background: url("https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-background-size: cover;
-background-position:center;
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-overflow: hidden;
-}
-h2{
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 15px;
-  color: white;
- 
-}
-
-.clock{
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?q=80&w=2070&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 
-.clock div{
-  margin: 5px;
-  position:relative;
+/* TITLE */
+h2 {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 14px;
+  color: #ffffffcc;
 }
 
-.clock span{
-  width: 100px;
-  height: 80px;
-  background-color: slateblue;
-  opacity: 0.8;
-  color: white;
+/* CLOCK CONTAINER */
+.clock {
+  display: flex;
+  gap: 12px;
+}
+
+/* TIME BLOCK */
+.clock div {
+  position: relative;
+}
+
+/* TIME DIGITS */
+.clock span {
+  width: 110px;
+  height: 90px;
+
+  background: rgba(106, 90, 205, 0.85);
+  backdrop-filter: blur(6px);
+
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 50px;
-  text-shadow: 2px 2px  4px rgba(0,0,0,0.3);
 
-}
-.clock .text{
-    height: 30px;
-    
-    font-size: 10px;
-    text-transform: uppercase;
-    background:darkgreen;
+  font-size: 52px;
+  font-weight: 600;
+  border-radius: 10px;
 
-    letter-spacing: 2px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-.clock #ampm{
+/* LABEL TEXT */
+.clock .text {
+  margin-top: 6px;
+  height: 28px;
+
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  background: rgba(0, 128, 0, 0.85);
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+}
+
+/* AM / PM BADGE */
+.clock #ampm {
   position: absolute;
-  bottom: 0;
-  width: 60px;
-  height: 30px;
-  font-size: 20px;
-  background:green ;
-  
+  right: -18px;
+  bottom: 6px;
+
+  width: 55px;
+  height: 28px;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  background: rgba(0, 160, 0, 0.9);
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .clock span {
+    width: 85px;
+    height: 70px;
+    font-size: 40px;
+  }
+
+  .clock #ampm {
+    right: -12px;
+    font-size: 14px;
+  }
 }
 
